@@ -3,7 +3,32 @@
 	import { testAPI } from "./api/test";
 	import { ElMessage } from "element-plus";
 
-	let dataList = ref("");
+	let dataList = ref([
+		{
+			id: 1,
+			姓名: "张三",
+			电话: "13000000000",
+			地址: "北京",
+		},
+		{
+			id: 2,
+			姓名: "李四",
+			电话: "13000000001",
+			地址: "上海",
+		},
+		{
+			id: 3,
+			姓名: "王五",
+			电话: "13000000002",
+			地址: "广州",
+		},
+		{
+			id: 4,
+			姓名: "张培",
+			电话: "18233050395",
+			地址: "四川省成都市新都区新都大道",
+		},
+	]);
 	let dialogVisible = ref(false);
 	//state : 1添加联系人 0：修改
 	let state = ref(1);
@@ -40,10 +65,10 @@
 	async function getAllPerson() {
 		let res = await testAPI.getAll();
 		console.log(res);
-		dataList.value = res.message;
+		dataList.value = res.data.message;
 	}
 	onMounted(() => {
-		getAllPerson();
+		// getAllPerson();
 	});
 	//修改按钮的回调
 	function modifyHandler(item) {
